@@ -4,5 +4,7 @@ packages:
   - 'infra/*'
 allowBuilds:
   '@biomejs/biome': true
+  core-js: true
   esbuild: true
+  protobufjs: true
   sharp: true
