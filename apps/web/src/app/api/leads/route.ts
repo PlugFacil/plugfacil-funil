@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   const SUCCESS_URLS: Record<string, string> = {
     pdf_mercado: `${process.env.NEXT_PUBLIC_SITE_URL}/mercado-veiculos-eletricos-brasil/obrigado`,
-    business_plan: `${process.env.NEXT_PUBLIC_SITE_URL}/obrigado`,
+    business_plan: `${process.env.NEXT_PUBLIC_SITE_URL}/plano-de-negocio/obrigado`,
   };
 
   const body = (await req.json()) as {
