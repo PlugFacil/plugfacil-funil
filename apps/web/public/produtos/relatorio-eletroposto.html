@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tudo que você precisa saber antes de investir em eletroposto — PlugFácil</title>
+<style>
+  @font-face {
+    font-family: 'ObjectSans';
+    src: url('../fonts/ObjectSans-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'ObjectSans';
+    src: url('../fonts/ObjectSans-Slanted.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'ObjectSans';
+    src: url('../fonts/ObjectSans-Heavy.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  :root {
+    --green: #7db940;
+    --green-mid: #5c9423;
+    --green-dark: #457216;
+    --green-xdark: #2f4d10;
+    --green-light: #eef6e5;
+    --navy: #032135;
+    --navy-mid: #11364e;
+    --offwhite: #f0f4f5;
+    --white: #ffffff;
+    --gray: #444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'ObjectSans', sans-serif;
+    color: #222;
+    background: #fff;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* CAPA */
+  .cover {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, var(--green-xdark) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    page-break-after: always;
+  }
+
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(125,185,64,0.15);
+    border: 1px solid rgba(125,185,64,0.3);
+    border-radius: 100px;
+    padding: 8px 20px;
+    margin-bottom: 40px;
+  }
+  .cover-badge span { color: var(--green); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+  .cover-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .cover-logo { color: var(--green); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 48px; }
+
+  .cover h1 {
+    font-size: 44px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 750px;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .cover h1 span { color: var(--green); }
+
+  .cover-sub {
+    font-size: 18px;
+    color: #aaa;
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.6;
+  }
+
+  .cover-tagline {
+    background: rgba(125,185,64,0.1);
+    border: 1px solid rgba(125,185,64,0.25);
+    border-radius: 12px;
+    padding: 20px 32px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+    max-width: 480px;
+    margin-bottom: 60px;
+  }
+
+  .cover-disclaimer {
+    font-size: 11px;
+    color: #555;
+    max-width: 560px;
+    line-height: 1.6;
+    border-top: 1px solid #333;
+    padding-top: 24px;
+  }
+
+  /* LAYOUT GERAL */
+  .page { max-width: 800px; margin: 0 auto; padding: 60px 48px; }
+
+  /* CAPÍTULO */
+  .chapter { page-break-before: always; padding-top: 48px; }
+
+  .chapter-num {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .hook {
+    font-size: 17px;
+    color: #444;
+    font-style: italic;
+    border-left: 3px solid var(--green);
+    padding-left: 16px;
+    margin: 24px 0 32px;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 40px 0 12px;
+  }
+
+  p { margin-bottom: 16px; color: #333; }
+
+  /* STAT CARDS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .stat-card {
+    background: var(--offwhite);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-card .label { font-size: 12px; font-weight: 600; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* TABELA */
+  table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+  th { background: var(--navy); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 12px 16px; border-bottom: 1px solid #eee; color: #333; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+  td strong { color: var(--navy); }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, var(--green-light), var(--green-light));
+    border: 1px solid #9ecf72;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .highlight p { color: var(--green-dark); margin-bottom: 0; }
+  .highlight strong { color: var(--green-xdark); }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    font-size: 13px;
+    color: #5d4037;
+    line-height: 1.6;
+  }
+  .disclaimer strong { color: #4e342e; }
+
+  /* CALLOUT DARK */
+  .callout-dark {
+    background: var(--navy);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .callout-dark p { color: #ccc; margin-bottom: 0; }
+  .callout-dark strong { color: var(--green); }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; margin: 16px 0 24px; }
+  .checklist li {
+    padding: 10px 0 10px 32px;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #333;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 16px;
+    top: 9px;
+  }
+
+  /* ERROS */
+  .error-block {
+    border-left: 4px solid #ef5350;
+    padding: 16px 20px;
+    background: #fff5f5;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+  }
+  .error-block .error-title { font-weight: 700; color: #c62828; font-size: 14px; margin-bottom: 6px; }
+  .error-block p { color: #555; font-size: 14px; margin-bottom: 0; }
+
+  /* MODELO CARDS */
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .model-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    background: #fff;
+  }
+  .model-card .model-tag {
+    display: inline-block;
+    background: var(--green);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .model-card h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .model-card p { font-size: 13px; color: #555; margin-bottom: 0; line-height: 1.5; }
+
+  /* ROI TABLE */
+  .roi-table th { background: var(--green-dark); }
+  .roi-highlight td { background: var(--green-light) !important; font-weight: 700; color: var(--green-xdark) !important; }
+  .roi-highlight td strong { color: var(--green-xdark); }
+
+  /* CTA FINAL */
+  .cta-section {
+    background: linear-gradient(135deg, var(--green-xdark), var(--green-dark));
+    border-radius: 20px;
+    padding: 56px 48px;
+    text-align: center;
+    margin-top: 60px;
+    page-break-before: always;
+  }
+  .cta-section h2 { color: #fff; font-size: 28px; margin-bottom: 16px; }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 16px; max-width: 520px; margin: 0 auto 32px; }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--green-dark);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 18px 48px;
+    border-radius: 100px;
+    text-decoration: none;
+    margin-bottom: 24px;
+  }
+  .cta-contact { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.8; }
+  .cta-contact strong { color: #fff; }
+
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    margin-top: 60px;
+    line-height: 1.8;
+  }
+
+  /* PRINT */
+  @media print {
+    .cover { min-height: 100vh; }
+    .chapter { page-break-before: always; }
+    .cta-section { page-break-before: always; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* SEPARADOR */
+  .divider { border: none; border-top: 1px solid #eee; margin: 40px 0; }
+
+  /* NOTA TÉCNICA */
+  .tech-note {
+    background: var(--offwhite);
+    border: 1px solid #c8d8dc;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--navy-mid);
+    margin: 16px 0;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  .col-good { background: var(--green-light); border: 1px solid var(--green); border-radius: 12px; padding: 20px; }
+  .col-bad { background: #ffebee; border: 1px solid #ef9a9a; border-radius: 12px; padding: 20px; }
+  .col-good h4 { color: var(--green-dark); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+  .col-bad h4 { color: #c62828; font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+  .col-good li, .col-bad li { font-size: 13px; color: #333; margin-bottom: 8px; list-style: none; padding-left: 16px; position: relative; }
+  .col-good li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .col-bad li::before { content: "✗"; position: absolute; left: 0; color: #ef5350; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-badge">
+    <div class="dot"></div>
+    <span>PlugFácil Mobilidade Elétrica</span>
+  </div>
+  <div class="cover-logo"><img src="../logo-plugfacil-branco.png" alt="PlugFácil" style="height:52px;"></div>
+  <h1>Tudo que você precisa saber antes de investir em <span>eletroposto</span></h1>
+  <p class="cover-sub">O mercado, os números, os custos e os modelos de negócio explicados sem enrolação.</p>
+  <div class="cover-tagline">"Não compre nem invista em eletroposto sem saber disso."</div>
+  <p class="cover-disclaimer">
+    Este material tem finalidade educacional e informativa. As projeções financeiras são estimativas baseadas em cenários típicos de operação. A PlugFácil Mobilidade Elétrica Ltda. não garante retorno sobre investimento. Resultados dependem de localização, fluxo de veículos elétricos, tarifa de energia local e perfil do ponto. Antes de qualquer decisão de investimento, consulte um assessor financeiro independente.<br><br>
+    CNPJ 66.053.337/0001-75 &nbsp;·&nbsp; contato@plugfacil.com.br &nbsp;·&nbsp; (12) 98850-6961
+  </p>
+</div>
+
+<div class="page">
+
+<!-- CAPÍTULO 1 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 01</div>
+  <h2>O mercado hoje</h2>
+  <p class="hook">O Brasil tem 300 mil veículos elétricos rodando nas ruas e menos de 5 mil pontos de recarga públicos. Isso não é problema. É oportunidade.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="num">300 mil</div>
+      <div class="label">VEs no Brasil</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">1:63</div>
+      <div class="label">carregador por carro</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">80%+</div>
+      <div class="label">crescimento ao ano</div>
+    </div>
+  </div>
+
+  <h3>A frota cresce mais rápido do que a infraestrutura consegue acompanhar</h3>
+  <p>A Associação Brasileira do Veículo Elétrico (ABVE) registrou crescimento de mais de 80% nas vendas de veículos eletrificados nos últimos 12 meses. A frota nacional já ultrapassa 300 mil unidades e a projeção é de aceleração nos próximos anos, puxada por três forças ao mesmo tempo: queda no preço dos carros, pressão de frotas corporativas (Uber, Mercado Livre, concessionárias) e financiamento federal.</p>
+  <p>O problema é que a infraestrutura de recarga não cresce no mesmo ritmo. Hoje, o Brasil tem aproximadamente 1 carregador para cada 63 veículos elétricos em circulação. Para se ter uma ideia do que isso representa, nos países onde a eletrificação está mais avançada, a proporção recomendada é de 1 para 8. O déficit brasileiro é estrutural e não será resolvido em 2 anos.</p>
+
+  <div class="highlight">
+    <p><strong>Isso significa que quem instala um eletroposto hoje entra num mercado com demanda represada e concorrência ainda baixa.</strong></p>
+  </div>
+
+  <h3>O governo acelerou o jogo</h3>
+  <p>O governo federal lançou a MP Move Aplicativos, que destinou <strong>R$ 31 bilhões</strong> para financiar a compra de veículos elétricos por taxistas e motoristas de aplicativo, com teto de R$ 150 mil por veículo. O efeito prático é uma injeção de dezenas de milhares de novos veículos elétricos nas ruas nos próximos 18 a 36 meses, justamente na categoria de usuários que mais precisa de rede de recarga pública.</p>
+
+  <h3>As montadoras estão apostando no Brasil de verdade</h3>
+  <p>A BYD, que já lidera as vendas de elétricos no varejo brasileiro com o Dolphin Mini, anunciou a construção de uma fábrica de veículos elétricos na Bahia com investimento bilionário. A Cadillac confirmou seu retorno ao Brasil com linha elétrica. A GM confirmou o Captiva PHEV. A Chevrolet Equinox EV já está sendo vendida.</p>
+
+  <h3>São Paulo já tornou obrigatória a infraestrutura em novos empreendimentos</h3>
+  <p>A cidade de São Paulo passou a exigir que novos empreendimentos comerciais e residenciais incluam infraestrutura de recarga elétrica. Construtoras e administradoras de condomínios que ainda não se mexeram vão precisar se mover nos próximos meses, sob pena de não obter habite-se.</p>
+
+  <div class="callout-dark">
+    <p>Um eletroposto DC de 40 kW instalado num ponto com bom fluxo pode realizar <strong>12 a 18 sessões de recarga por dia</strong>, gerando R$ 180 a R$ 540 de faturamento diário. A janela de entrada ainda está aberta. Mas ela não vai ficar aberta para sempre.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 2 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 02</div>
+  <h2>Como funciona a recarga</h2>
+  <p class="hook">Antes de colocar dinheiro em qualquer equipamento, você precisa entender uma coisa: AC e DC não são apenas siglas de corrente elétrica. São modelos de negócio diferentes.</p>
+
+  <h3>Dois tipos de carregador, dois perfis de operação</h3>
+
+  <div class="model-grid">
+    <div class="model-card">
+      <div class="model-tag">AC Level 2</div>
+      <h4>Carregador AC 7,4 kW</h4>
+      <p>Carrega em 4 a 8 horas. Ideal para condomínios, hotéis, pousadas, escritórios e academias. O motorista conecta e deixa o carro parado por horas.</p>
+      <p style="margin-top:12px; font-weight:700; color:var(--green-dark);">Equipamento WEG: R$ 11.000</p>
+    </div>
+    <div class="model-card">
+      <div class="model-tag">DC Fast Charge</div>
+      <h4>Carregador DC 30-80 kW</h4>
+      <p>Carrega em 30 a 60 minutos. Ideal para postos, shoppings, supermercados e rodovias. O motorista para, carrega e vai embora.</p>
+      <p style="margin-top:12px; font-weight:700; color:var(--green-dark);">Equipamento DC 40kW: R$ 78.000</p>
+    </div>
+  </div>
+
+  <h3>O que os carros mais vendidos aceitam</h3>
+  <table>
+    <thead>
+      <tr><th>Veículo</th><th>Bateria</th><th>AC máx.</th><th>DC máx.</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>BYD Dolphin Mini</td><td>38,4 kWh</td><td>11 kW</td><td>60 kW</td></tr>
+      <tr><td>BYD Seagull</td><td>30,5 kWh</td><td>6,6 kW</td><td>30 kW</td></tr>
+      <tr><td>BYD Seal</td><td>82,56 kWh</td><td>11 kW</td><td>150 kW</td></tr>
+      <tr><td>Chevrolet Equinox EV</td><td>79 kWh</td><td>11,5 kW</td><td>150 kW</td></tr>
+      <tr><td>GWM Ora 03</td><td>40 kWh</td><td>6,6 kW</td><td>60 kW</td></tr>
+      <tr><td>Volvo EX30</td><td>51 kWh</td><td>11 kW</td><td>153 kW</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tech-note">
+    <strong>Atenção ao dimensionamento:</strong> instalar um DC de 80 kW num ponto onde 90% da frota local é BYD Seagull (aceita no máximo 30 kW) é desperdício de capital. A análise do ponto precisa incluir o perfil dos veículos que vão usar o carregador.
+  </div>
+
+  <h3>Padrão de conector no Brasil</h3>
+  <p><strong>CCS2:</strong> conector padrão para recarga DC rápida. Presente em praticamente todos os elétricos vendidos no Brasil a partir de 2023.</p>
+  <p><strong>Tipo 2 (IEC 62196):</strong> conector padrão para recarga AC. Presente em quase todos os elétricos vendidos no Brasil.</p>
+
+  <h3>Load balancing: essencial em condomínios</h3>
+  <p>Quando vários carregadores compartilham o mesmo circuito, o load balancing distribui automaticamente a potência disponível. Sem ele, conectar múltiplos carregadores ao mesmo tempo dispara as proteções elétricas. Para condomínios com múltiplas vagas, é requisito de segurança, não opcional.</p>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 3 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 03</div>
+  <h2>Custos de instalação</h2>
+  <p class="hook">A maioria das pessoas que entram no mercado subestima o CAPEX. Não porque os equipamentos sejam caros, mas porque ignoram o que vem depois do equipamento.</p>
+
+  <h3>Tabela completa de custos</h3>
+  <table>
+    <thead>
+      <tr><th>Item</th><th>Custo aprox.</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Carregador AC 7,4 kW WEG WEMOB</td><td><strong>R$ 11.000</strong></td></tr>
+      <tr><td>Carregador DC 30 kW</td><td><strong>R$ 65.000</strong></td></tr>
+      <tr><td>Carregador DC 40 kW</td><td><strong>R$ 78.000</strong></td></tr>
+      <tr><td>Carregador DC 80 kW</td><td><strong>R$ 135.000</strong></td></tr>
+      <tr><td>Obra civil base (base, proteção, piso)</td><td>R$ 8.000</td></tr>
+      <tr><td>Cabeamento base (até 10m do quadro)</td><td>R$ 4.000</td></tr>
+      <tr><td>Sinalização (placa, faixa, pintura de vaga)</td><td>R$ 1.500</td></tr>
+      <tr><td>Extra para instalação DC (cabos, aterramento, DPS)</td><td>R$ 12.000</td></tr>
+      <tr><td>ART do engenheiro responsável</td><td>R$ 800 a R$ 2.500</td></tr>
+    </tbody>
+  </table>
+
+  <h3>A regra dos 10 metros</h3>
+  <p>A instalação padrão contempla até 10 metros de cabeamento entre o quadro elétrico e o ponto de instalação do carregador. Além disso, cada metro adicional de cabeamento de alta bitola custa entre R$ 180 e R$ 350. Num ponto onde o quadro está a 40 metros do carregador, os 30 metros extras podem adicionar R$ 6.000 a R$ 10.500 ao orçamento.</p>
+
+  <div class="disclaimer">
+    <strong>Antes de fechar qualquer orçamento:</strong> meça a distância real entre o quadro elétrico e o local de instalação. Isso evita revisões de preço na hora de executar.
+  </div>
+
+  <h3>Quando é necessário ampliar a demanda elétrica</h3>
+  <p>Um DC de 40 kW precisa de pelo menos 50 kVA disponíveis. O prazo para ampliação junto à distribuidora varia de 15 a 90 dias. Em alguns casos, é necessária a instalação de um transformador exclusivo, o que pode adicionar R$ 15.000 a R$ 45.000 ao investimento. Esse levantamento precisa ser feito antes de qualquer compromisso.</p>
+
+  <h3>Normas obrigatórias</h3>
+  <p><strong>ABNT NBR 5410:</strong> instalações elétricas de baixa tensão. Dimensionamento de cabos, proteções, aterramento.</p>
+  <p><strong>Resolução ANEEL 1000/2021:</strong> regras para conexão de equipamentos de recarga à rede elétrica.</p>
+  <p><strong>IT-64 do Corpo de Bombeiros:</strong> exige análise específica para eletropostos em subsolo e áreas cobertas.</p>
+
+  <p>Instalação feita sem conformidade com essas normas pode resultar em embargo pelo Corpo de Bombeiros ou negativa de seguro. Não é burocracia. É proteção do investimento.</p>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 4 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 04</div>
+  <h2>Custo de energia e operação</h2>
+  <p class="hook">O eletroposto vende energia. O custo da sua matéria-prima aparece em cada sessão de recarga, todo dia, todo mês. Entender a tarifa não é opcional.</p>
+
+  <h3>Como a conta de energia é cobrada</h3>
+  <p>A tarifa é composta por <strong>TUSD</strong> (custo do transporte da energia) + <strong>TE</strong> (custo da energia em si) + encargos setoriais + impostos (ICMS, PIS, COFINS) + bandeira tarifária.</p>
+
+  <table>
+    <thead><tr><th>Bandeira</th><th>Adicional por kWh</th><th>Impacto mensal (3.000 kWh)</th></tr></thead>
+    <tbody>
+      <tr><td>Verde</td><td>R$ 0,00</td><td>R$ 0</td></tr>
+      <tr><td>Amarela</td><td>R$ 0,01874</td><td>R$ 56</td></tr>
+      <tr><td>Vermelha 1</td><td>R$ 0,04463</td><td>R$ 134</td></tr>
+      <tr><td>Vermelha 2</td><td>R$ 0,07877</td><td>R$ 236</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Como calcular a margem por sessão</h3>
+  <div class="highlight">
+    <p><strong>Exemplo: 1 sessão DC de 30 kWh</strong></p>
+    <p>Custo de energia: 30 kWh × R$ 0,90/kWh = R$ 27,00</p>
+    <p>Receita da sessão: 30 kWh × R$ 1,50/kWh + R$ 1,00 (taxa conexão) = R$ 46,00</p>
+    <p><strong>Margem bruta da sessão: R$ 19,00 (41%)</strong></p>
+    <p>Com 10 sessões por dia: R$ 190/dia = aprox. R$ 5.700/mês antes de plataforma e manutenção.</p>
+  </div>
+
+  <h3>Energia solar como aliada</h3>
+  <p>Uma instalação solar de 20 kWp (R$ 40.000 a R$ 60.000) gera em torno de 2.400 kWh por mês no Sudeste. Se isso representa 30% do consumo do eletroposto, a redução no custo de energia pode ser de R$ 2.000 a R$ 2.800 por mês, acelerando o payback do conjunto.</p>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 5 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 05</div>
+  <h2>Modelos de negócio</h2>
+  <p class="hook">A maior parte das pessoas imagina que a única forma de entrar no mercado é comprando um carregador. Existem quatro modelos com perfis de risco, investimento e retorno completamente diferentes.</p>
+
+  <table>
+    <thead><tr><th>Modelo</th><th>Investe capital?</th><th>O que recebe</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Franquia</strong></td><td>SIM (R$ 28k a R$ 240k)</td><td>Renda recorrente (após royalties 12% + Tupi 10%)</td></tr>
+      <tr><td><strong>Parceria Comercial</strong></td><td>NÃO</td><td>% da margem operacional</td></tr>
+      <tr><td><strong>Cessão Residencial</strong></td><td>NÃO</td><td>Reembolso integral de energia</td></tr>
+      <tr><td><strong>Cessão Comercial</strong></td><td>NÃO</td><td>Reembolso de energia + publicidade na tela LCD</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Franquia: os modelos de investimento</h3>
+  <table>
+    <thead><tr><th>Modelo</th><th>Perfil</th><th>Equipamentos</th><th>Total</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Essencial</strong></td><td>Hotéis/Pousadas</td><td>2x AC 7kW</td><td><strong>R$ 28.000</strong></td></tr>
+      <tr><td><strong>Start</strong></td><td>Cafés/Restaurantes</td><td>1x DC 30kW</td><td><strong>R$ 75.000</strong></td></tr>
+      <tr><td><strong>Pro</strong></td><td>Postos/Comércios</td><td>1x AC + 1x DC 40kW</td><td><strong>R$ 97.000</strong></td></tr>
+      <tr><td><strong>Turbo</strong></td><td>Shoppings/Mercados</td><td>2x AC + 1x DC 80kW</td><td><strong>R$ 180.000</strong></td></tr>
+      <tr><td><strong>Hub</strong></td><td>Eletropostos completos</td><td>3x AC + 1x DC 120kW</td><td><strong>R$ 240.000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>A plataforma Tupi e por que ela importa</h3>
+  <p>Em todos os modelos, a operação usa a plataforma Tupi, a maior rede de recarga do Brasil com mais de 300 mil motoristas cadastrados. A Tupi foi adquirida pela WEG e é integrada de fábrica nos carros BYD vendidos no Brasil. Quando um novo eletroposto entra na rede Tupi, ele fica visível imediatamente para essa base inteira de usuários.</p>
+  <p>A PlugFácil arca com a licença mensal da plataforma Tupi para o franqueado. Esse custo, que seria pago pelo operador em outras redes, já está embutido nos royalties.</p>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 6 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 06</div>
+  <h2>Cálculo de ROI com exemplos reais</h2>
+  <p class="hook">Todo mundo quer saber quanto rende. A resposta honesta é: depende de quanto o carregador trabalha. Mas os dados que temos permitem calcular cenários realistas.</p>
+
+  <div class="disclaimer">
+    <strong>Disclaimer obrigatório:</strong> Projeções são estimativas baseadas em cenários típicos de operação. A PlugFácil não garante retorno. Resultados dependem de localização, fluxo de veículos elétricos, tarifa de energia local e perfil do ponto.
+  </div>
+
+  <h3>Exemplo 1: Modelo PRO (posto ou comércio com bom fluxo)</h3>
+  <table>
+    <thead><tr><th colspan="2">Composição do investimento</th></tr></thead>
+    <tbody>
+      <tr><td>Equipamentos + instalação</td><td><strong>R$ 85.000</strong></td></tr>
+      <tr><td>Capital de giro</td><td><strong>R$ 12.000</strong></td></tr>
+      <tr class="roi-highlight"><td><strong>Total investido</strong></td><td><strong>R$ 97.000</strong></td></tr>
+    </tbody>
+  </table>
+
+  <table class="roi-table">
+    <thead><tr><th>Indicador</th><th>Valor estimado (Ano 1)</th></tr></thead>
+    <tbody>
+      <tr><td>Faturamento bruto médio</td><td>R$ 7.756/mês</td></tr>
+      <tr><td>Custo de energia</td><td>R$ 2.950/mês</td></tr>
+      <tr><td>Taxa plataforma Tupi (10%)</td><td>R$ 776/mês</td></tr>
+      <tr><td>Royalties PlugFácil (12%)</td><td>R$ 931/mês</td></tr>
+      <tr><td>Manutenção (0,5% CAPEX/mês)</td><td>R$ 485/mês</td></tr>
+      <tr class="roi-highlight"><td><strong>Lucro liquido estimado</strong></td><td><strong>R$ 2.541/mês</strong></td></tr>
+    </tbody>
+  </table>
+
+  <table class="roi-table">
+    <thead><tr><th>Indicador de retorno</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td>Payback (caixa)</td><td>aprox. 30 meses</td></tr>
+      <tr><td>Payback (econômico, com depreciação)</td><td>aprox. 38 meses</td></tr>
+      <tr><td>TIR (caixa)</td><td>aprox. 76,6% ao ano</td></tr>
+      <tr><td>TIR (econômico)</td><td>aprox. 55,2% ao ano</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Comparativo 10 anos: CDI versus Eletroposto</h3>
+  <table class="roi-table">
+    <thead><tr><th>Cenário</th><th>Retorno acumulado em 10 anos</th></tr></thead>
+    <tbody>
+      <tr><td>CDI puro (capital de R$ 97k intacto)</td><td>R$ 326.000</td></tr>
+      <tr><td>Eletroposto reinvestindo lucros</td><td>R$ 931.000</td></tr>
+      <tr class="roi-highlight"><td><strong>Diferença</strong></td><td><strong>+R$ 605.000 sobre o CDI</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout-dark">
+    <p><strong>Atenção:</strong> a virada sobre o CDI acontece no <strong>Ano 4</strong>. Nos primeiros 36 meses, o capital em CDI rende mais. O eletroposto faz sentido para quem tem horizonte de pelo menos 5 anos e não precisa do capital de volta no curto prazo.</p>
+  </div>
+
+  <h3>A fórmula que você pode aplicar ao seu ponto</h3>
+  <div class="highlight">
+    <p><strong>Receita mensal:</strong> sessoes/dia × kWh/sessão × R$ 1,50 × 30 + (taxa conexão R$ 1,00 × sessões × 30)</p>
+    <p><strong>Margem bruta:</strong> Receita - Custo energia - Taxa plataforma (10%) - Manutenção (0,5% CAPEX/mês)</p>
+    <p><strong>Payback simples:</strong> CAPEX total / Margem bruta mensal</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CAPÍTULO 7 -->
+<div class="chapter">
+  <div class="chapter-num">Capítulo 07</div>
+  <h2>O que avaliar antes de decidir</h2>
+  <p class="hook">Mais pessoas perdem dinheiro em eletroposto por não avaliar o ponto do que por qualquer outra razão. A tecnologia funciona. A operação é simples. O que varia é o lugar.</p>
+
+  <h3>Checklist de viabilidade do ponto</h3>
+  <ul class="checklist">
+    <li>Quantos VEs circulam regularmente na área de influência do ponto (raio de 5 km)?</li>
+    <li>Há concentração de frotas corporativas elétricas (apps de transporte, locadoras, delivery) na região?</li>
+    <li>A cidade tem crescimento de VEs acima da média nacional?</li>
+    <li>Qual a potência contratada disponível no ponto?</li>
+    <li>Qual a distância do quadro elétrico ao local de instalação do carregador?</li>
+    <li>Há área disponível para a instalação sem conflito com outras vagas ou circulação?</li>
+    <li>O fluxo de caixa do investidor suporta o período até o payback (24 a 38 meses)?</li>
+    <li>Há comprometimento com o prazo de contrato (mínimo 5 anos)?</li>
+  </ul>
+
+  <h3>Erros comuns de quem entra sem estudar</h3>
+
+  <div class="error-block">
+    <div class="error-title">Erro 1: Escolher o ponto pela facilidade de instalação, não pelo fluxo de VEs</div>
+    <p>Um eletroposto sem fluxo de carros elétricos é um ativo parado. A análise precisa começar pelo potencial de demanda, não pela conveniência logística.</p>
+  </div>
+
+  <div class="error-block">
+    <div class="error-title">Erro 2: Usar preço de eletricidade residencial como referência de custo</div>
+    <p>A tarifa residencial e a comercial são diferentes. Estabelecimentos em tarifa horo-sazonal têm picos de preço em horários específicos que podem dobrar o custo de energia.</p>
+  </div>
+
+  <div class="error-block">
+    <div class="error-title">Erro 3: Subestimar o prazo até o payback</div>
+    <p>Payback de 30 meses significa 2,5 anos para recuperar o capital. Quem entra esperando retorno em 12 meses vai se frustrar.</p>
+  </div>
+
+  <div class="error-block">
+    <div class="error-title">Erro 4: Ignorar a manutenção preventiva</div>
+    <p>Carregadores sem manutenção preventiva travam e ficam fora do ar. Cada hora parada é sessão perdida e avaliação negativa no app afastando novos usuários.</p>
+  </div>
+
+  <div class="error-block">
+    <div class="error-title">Erro 5: Nao ler o contrato com atenção</div>
+    <p>Franquias no Brasil são reguladas pela Lei 8.955/94, que exige entrega da Circular de Oferta de Franquia (COF) com antecedência mínima de 10 dias. Se não recebeu a COF, não assine.</p>
+  </div>
+
+  <h3>Ponto bom versus ponto ruim</h3>
+  <div class="two-col">
+    <div class="col-good">
+      <h4>Ponto bom</h4>
+      <ul>
+        <li>Alta concentração de VEs na area (alto poder aquisitivo, frotas corporativas)</li>
+        <li>Permanência natural compatível com o tipo de carregador</li>
+        <li>Tarifa de energia abaixo de R$ 0,95/kWh</li>
+        <li>Quadro elétrico a menos de 15 metros</li>
+        <li>Visível e acessível no app Tupi</li>
+      </ul>
+    </div>
+    <div class="col-bad">
+      <h4>Ponto ruim</h4>
+      <ul>
+        <li>Fluxo de VEs incipiente sem perspectiva de crescimento</li>
+        <li>Alta rotatividade do estabelecimento</li>
+        <li>Tarifa acima de R$ 1,10/kWh sem compensação solar</li>
+        <li>Acesso difícil (subsolo profundo, rampa ingreme)</li>
+        <li>Concorrência direta a menos de 500 metros</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-section">
+  <h2>O que você sabe agora que 95% das pessoas não sabem</h2>
+  <p>Você sabe que o déficit é real, que AC e DC são negócios diferentes, que o custo de energia é a variável mais importante e que o payback típico é de 24 a 38 meses. Mas saber a teoria é só o primeiro passo.</p>
+  <p>O próximo nível é uma análise do SEU ponto: frota da sua cidade, tarifa da sua distribuidora, potência disponível e cenários de ROI calculados para a sua situação específica. A PlugFácil faz isso com tecnologia própria em menos de 48 horas.</p>
+  <a href="https://wa.me/5512988506961?text=Olá!%20Li%20o%20relatório%20e%20quero%20meu%20Plano%20de%20Negócio%20personalizado." class="cta-btn">Quero meu Plano de Negócio personalizado</a>
+  <div class="cta-contact">
+    <strong>WhatsApp: (12) 98850-6961</strong><br>
+    contato@plugfacil.com.br<br>
+    Segunda a sexta, 9h às 18h
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <img src="../logo-plugfacil.png" alt="PlugFácil" style="height:32px; margin-bottom:12px;"><br>
+  PlugFácil Mobilidade Elétrica Ltda. &nbsp;·&nbsp; CNPJ 66.053.337/0001-75 &nbsp;·&nbsp; São José dos Campos, SP<br>
+  Integradora certificada WEG &nbsp;·&nbsp; Parceira oficial Tupi<br>
+  Projeções são estimativas. A PlugFácil não garante retorno sobre investimento.
+</div>
+
+</body>
+</html>

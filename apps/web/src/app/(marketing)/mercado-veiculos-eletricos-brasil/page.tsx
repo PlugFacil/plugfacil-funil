@@ -2,7 +2,6 @@ import { AudienceSection } from "@/components/marketing/pdf-eletromobilidade/Aud
 import { ContentSection } from "@/components/marketing/pdf-eletromobilidade/ContentSection";
 import { FaqSection } from "@/components/marketing/pdf-eletromobilidade/FaqSection";
 import { FinalCtaSection } from "@/components/marketing/pdf-eletromobilidade/FinalCtaSection";
-import { GuaranteeSection } from "@/components/marketing/pdf-eletromobilidade/GuaranteeSection";
 import { HeroSection } from "@/components/marketing/pdf-eletromobilidade/HeroSection";
 import { KpiStrip } from "@/components/marketing/pdf-eletromobilidade/KpiStrip";
 import { LpFooter } from "@/components/marketing/pdf-eletromobilidade/LpFooter";
@@ -27,7 +26,6 @@ export default function PdfEletromobilidadePage() {
       <KpiStrip />
       <ContentSection />
       <AudienceSection />
-      <GuaranteeSection />
       <FaqSection />
       <FinalCtaSection />
       <LpFooter />

@@ -144,7 +144,7 @@ export function PurchaseCard({ dark = false }: PurchaseCardProps) {
         </button>
 
         <p className="text-xs text-center text-gray-400">
-          🔒 Pagamento seguro via Stripe · 7 dias de garantia
+          🔒 Pagamento seguro via Stripe
         </p>
       </form>
     </div>

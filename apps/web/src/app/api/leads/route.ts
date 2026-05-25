@@ -1,19 +1,19 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "");
-
-const PRICE_IDS: Record<string, string> = {
-  pdf_mercado: process.env.STRIPE_PRICE_ID_PDF ?? "",
-  business_plan: process.env.STRIPE_PRICE_ID_BP ?? "",
-};
-
-const SUCCESS_URLS: Record<string, string> = {
-  pdf_mercado: `${process.env.NEXT_PUBLIC_SITE_URL}/mercado-veiculos-eletricos-brasil/obrigado`,
-  business_plan: `${process.env.NEXT_PUBLIC_SITE_URL}/obrigado`,
-};
-
 export async function POST(req: Request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+  const PRICE_IDS: Record<string, string> = {
+    pdf_mercado: process.env.STRIPE_PRICE_ID_PDF ?? "",
+    business_plan: process.env.STRIPE_PRICE_ID_BP ?? "",
+  };
+
+  const SUCCESS_URLS: Record<string, string> = {
+    pdf_mercado: `${process.env.NEXT_PUBLIC_SITE_URL}/mercado-veiculos-eletricos-brasil/obrigado`,
+    business_plan: `${process.env.NEXT_PUBLIC_SITE_URL}/obrigado`,
+  };
+
   const body = (await req.json()) as {
     nome: string;
     email: string;

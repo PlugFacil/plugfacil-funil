@@ -7,7 +7,7 @@ const CAPITULOS = [
   {
     num: "02",
     titulo: "Tipos de carregadores",
-    desc: "AC 7,4kW, DC 30kW, DC 80kW — quando usar cada um sem gastar errado. A potência certa para o ponto certo.",
+    desc: "AC 7,4kW, DC 30kW, DC 80kW: quando usar cada um sem gastar errado. A potência certa para o ponto certo.",
   },
   {
     num: "03",
@@ -37,7 +37,7 @@ const CAPITULOS = [
   {
     num: "08",
     titulo: "Próximos passos",
-    desc: "Se fizer sentido para você, mostramos o próximo nível — uma análise personalizada do seu ponto com IA.",
+    desc: "Se fizer sentido para você, mostramos o próximo nível: uma análise personalizada do seu ponto com IA.",
   },
 ];
 
@@ -49,8 +49,8 @@ export function ContentSection() {
           O que está dentro do relatório
         </h2>
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          40+ páginas. Sem enrolação. Cada capítulo responde uma pergunta que quem está avaliando o
-          setor precisa de resposta.
+          40 páginas. Sem enrolação. Cada capítulo responde uma pergunta que quem está avaliando o
+          setor precisa de resposta antes de tomar qualquer decisão.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
@@ -73,12 +73,13 @@ export function ContentSection() {
         {/* Autoridade */}
         <div className="bg-white/5 border border-[#4CAF50]/20 rounded-2xl p-8 max-w-3xl mx-auto text-center">
           <p className="text-gray-300 leading-relaxed">
-            Esse relatório não foi escrito por consultor. Foi escrito por quem instala e opera
-            eletropostos no Brasil.{" "}
+            Esse relatório não foi escrito por consultor de slide. Foi escrito por quem instala e
+            opera eletropostos no Brasil.{" "}
             <span className="text-white font-medium">
               A PlugFácil é integradora certificada WEG e parceira da Tupi
             </span>
-            , a maior plataforma de recarga do Brasil, com 300 mil motoristas cadastrados.
+            , a maior plataforma de recarga do Brasil, com mais de 300 mil motoristas cadastrados.
+            Sabemos o que funciona e o que não funciona porque somos nós que chegamos no campo.
           </p>
         </div>
       </div>

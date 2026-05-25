@@ -14,19 +14,19 @@ export default function ObrigadoPage() {
           <span className="text-4xl">✅</span>
         </div>
 
-        <h1 className="text-3xl font-bold text-white mb-4">Compra confirmada!</h1>
+        <h1 className="text-3xl font-bold text-white mb-4">Tudo certo, obrigado!</h1>
         <p className="text-gray-400 mb-8 leading-relaxed">
-          Seu relatório está a caminho. Verifique o email que você cadastrou nos próximos 5 minutos.
-          Se não encontrar, confira a caixa de spam.
+          Seu relatório está a caminho. Olha o email que você cadastrou nos próximos 5 minutos. Se
+          nao encontrar, confere o spam.
         </p>
 
         {/* Plant sutil do Produto 2 */}
         <div className="bg-white/5 border border-white/10 rounded-2xl p-8 mb-8 text-left">
-          <p className="text-white font-semibold mb-3">Enquanto o relatório chega…</p>
+          <p className="text-white font-semibold mb-3">Enquanto o relatório chega...</p>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            Muitos que leem o relatório querem dar o próximo passo: entender se o{" "}
-            <strong className="text-white">seu ponto específico</strong> é viável — com análise de
-            mercado local, dados energéticos e modelagem financeira. Nosso time faz isso com IA em
+            Muita gente que lê o relatório quer dar o próximo passo: entender se o{" "}
+            <strong className="text-white">ponto específico deles</strong> é viável, com análise de
+            mercado local, dados de energia e modelagem financeira. A PlugFácil faz isso com IA em
             menos de 48h.
           </p>
           <a
@@ -35,13 +35,13 @@ export default function ObrigadoPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-[#4CAF50] font-medium hover:underline text-sm"
           >
-            Falar com a PlugFácil →
+            Falar com a PlugFácil
           </a>
         </div>
 
         {/* Compartilhamento */}
         <a
-          href="https://wa.me/?text=Encontrei%20este%20relatório%20sobre%20o%20mercado%20de%20eletropostos%20no%20Brasil%20—%20acho%20que%20pode%20te%20interessar%3A%20https://plugfacil.com.br/mercado-veiculos-eletricos-brasil"
+          href="https://wa.me/?text=Encontrei%20este%20relatório%20sobre%20o%20mercado%20de%20eletropostos%20no%20Brasil%2C%20acho%20que%20pode%20te%20interessar%3A%20https://plugfacil.com.br/mercado-veiculos-eletricos-brasil"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm transition-colors"

@@ -2,17 +2,17 @@ const PERFIS = [
   {
     emoji: "📈",
     titulo: "Investidor",
-    desc: "Você quer entender se eletroposto faz sentido no seu portfólio antes de comprometer capital. Este relatório mostra os modelos, os custos e o que os números reais indicam.",
+    desc: "Você quer saber se eletroposto faz sentido no seu portfólio antes de comprometer capital. O relatório mostra os modelos, os custos reais e o que os números indicam. Sem promessa de retorno garantido.",
   },
   {
     emoji: "🏪",
     titulo: "Dono de estabelecimento",
-    desc: "Posto, hotel, supermercado, restaurante. Você recebe os carros, quer saber se cabe um carregador e o que isso pode gerar para o seu negócio.",
+    desc: "Posto, hotel, supermercado, restaurante. Você recebe os carros e quer saber se cabe um carregador, o que isso pode gerar e quem opera. Explicamos cada modelo de parceria.",
   },
   {
     emoji: "🏢",
-    titulo: "Síndico ou gestor predial",
-    desc: "Seu condomínio já tem moradores com VE ou vai ter. Você precisa entender as opções antes de abrir licitação ou assinar qualquer proposta.",
+    titulo: "Sindico ou gestor predial",
+    desc: "Seu condomínio já tem moradores com VE ou vai ter em breve. Com o governo injetando R$ 31 bilhões para financiar VEs via MP Move Aplicativos, a pressão vai aumentar. Entenda as opções antes de assinar qualquer proposta.",
   },
 ];
 
@@ -24,7 +24,7 @@ export function AudienceSection() {
           Para quem é este relatório
         </h2>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          Você não precisa ser engenheiro nem ter decidido nada ainda. Precisa só estar avaliando o
+          Você nao precisa ser engenheiro nem ter decidido nada ainda. Precisa só estar avaliando o
           setor com seriedade.
         </p>
 

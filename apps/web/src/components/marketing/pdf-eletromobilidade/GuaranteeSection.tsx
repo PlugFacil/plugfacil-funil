@@ -7,10 +7,10 @@ export function GuaranteeSection() {
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Garantia de 7 dias</h2>
         <p className="text-xl text-gray-600 mb-6">
-          7 dias. Sem perguntas. Se o relatório não agregar, devolvemos R$ 49,90 integralmente.
+          7 dias. Sem perguntas. Se o relatório nao agregar nada, devolvemos os R$ 49,90 inteiros.
         </p>
         <p className="text-gray-400 text-sm">
-          Basta responder o email de entrega pedindo o reembolso. Processamos em até 5 dias úteis.
+          Basta responder o email de entrega com o pedido. Processamos em até 5 dias úteis.
         </p>
       </div>
     </section>

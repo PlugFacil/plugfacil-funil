@@ -2,24 +2,32 @@ const KPIS = [
   {
     numero: "1 para 63",
     label: "carros por carregador",
-    detalhe: "déficit crítico de infraestrutura no Brasil",
+    detalhe: "Faltam eletropostos. O déficit é real e quem entrar agora pega o melhor da curva.",
   },
   {
-    numero: "300 mil",
-    label: "motoristas na Tupi",
-    detalhe: "maior plataforma de recarga do Brasil",
-  },
-  { numero: "80%+", label: "crescimento ao ano", detalhe: "vendas de veículos elétricos (ABVE)" },
-  { numero: "R$ 3 bi", label: "até 2028", detalhe: "movimentação estimada no setor de recarga" },
-  {
-    numero: "BYD",
-    label: "fábrica na Bahia",
-    detalhe: "maior montadora de VE do mundo chega ao Brasil",
+    numero: "300 mil+",
+    label: "motoristas já conectados",
+    detalhe: "Usuários ativos na Tupi, a maior plataforma de recarga do Brasil.",
   },
   {
-    numero: "SP já exige",
-    label: "em novos empreendimentos",
-    detalhe: "infraestrutura de recarga obrigatória",
+    numero: "80%+",
+    label: "crescimento ao ano",
+    detalhe: "Vendas de VEs no Brasil segundo a ABVE. Não é projeção, é o que já aconteceu.",
+  },
+  {
+    numero: "R$ 3 bi",
+    label: "em movimento até 2028",
+    detalhe: "Estimativa do setor de recarga. O dinheiro está se posicionando agora.",
+  },
+  {
+    numero: "BYD + GM",
+    label: "apostando no Brasil",
+    detalhe: "BYD com fábrica na Bahia. Cadillac chegando. Captiva PHEV confirmada para 2025.",
+  },
+  {
+    numero: "R$ 31 bi",
+    label: "do governo federal",
+    detalhe: "MP Move Aplicativos financia VEs até R$ 150 mil para taxistas e motoristas de app.",
   },
 ];
 
@@ -31,7 +39,7 @@ export function KpiStrip() {
           O mercado não está esperando
         </h2>
         <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-          Estes números são de fontes públicas — ABVE, ANEEL e do que vemos no campo todos os dias.
+          Dados da ABVE, ANEEL e do que vemos no campo. Sem enfeite.
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">

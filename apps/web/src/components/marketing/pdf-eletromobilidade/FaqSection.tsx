@@ -5,23 +5,23 @@ import { useState } from "react";
 const FAQS = [
   {
     q: "Isso é para investidor ou para engenheiro?",
-    a: "Para quem precisa entender o mercado antes de qualquer decisão técnica ou financeira. O relatório é objetivo e direto — sem fórmulas de engenharia, sem jargão de investimento.",
+    a: "Para quem precisa entender o mercado antes de qualquer decisão, técnica ou financeira. O relatório é direto, sem fórmula de engenharia e sem jargão de investimento.",
   },
   {
     q: "Os dados são atualizados?",
-    a: "Sim. O relatório é atualizado trimestralmente com dados da ABVE, ANEEL e do que observamos no campo. A versão atual cobre o cenário mais recente do mercado brasileiro.",
+    a: "Sim. Usamos dados da ABVE, ANEEL e do que observamos no campo. Incluímos os movimentos mais recentes: BYD com fábrica no Brasil, Cadillac voltando ao mercado e o programa federal de R$ 31 bilhões para financiar VEs.",
   },
   {
     q: "Tem suporte após a compra?",
     a: "Sim. Responda o email de entrega com sua dúvida. Nossa equipe responde em até 1 dia útil.",
   },
   {
-    q: "É um curso ou um PDF?",
-    a: "É um relatório objetivo, 40+ páginas, sem enrolação. Você lê no ritmo que quiser, no celular ou no computador.",
+    q: "É um curso ou um relatório?",
+    a: "É um relatório objetivo, 40 páginas, sem enrolação. Você lê no ritmo que quiser, no celular ou no computador.",
   },
   {
     q: "Como recebo?",
-    a: "No email cadastrado, em até 5 minutos após a confirmação do pagamento. Se não encontrar, verifique o spam.",
+    a: "No email cadastrado, em até 5 minutos após confirmar o pagamento. Se nao encontrar, olha no spam.",
   },
 ];
 
