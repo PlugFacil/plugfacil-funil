@@ -69,6 +69,10 @@ export async function POST(req: Request) {
     await scheduleNurtureSequence({ email, nome });
   }
 
+  // fire-and-forget — não bloqueia resposta ao Stripe
+  void sendWhatsAppWelcome({ phone: whatsapp, nome, produto });
+  void createPipefyCard({ nome, phone: whatsapp, email, perfil, produto });
+
   return NextResponse.json({ received: true });
 }
 
@@ -309,6 +313,112 @@ function nurture7(name: string) {
     ${btn("Gerar meu Business Plan com 20% off", couponUrl)}
     ${sig()}
   `);
+}
+
+async function sendWhatsAppWelcome({
+  phone,
+  nome,
+  produto,
+}: {
+  phone: string;
+  nome: string;
+  produto: string;
+}) {
+  const instanceId = process.env.ZAPI_INSTANCE_ID;
+  const token = process.env.ZAPI_TOKEN;
+  const clientToken = process.env.ZAPI_CLIENT_TOKEN;
+  if (!instanceId || !token || !phone) return;
+
+  const firstName = nome.split(" ")[0] || "você";
+  const produtoLabel = produto === "business_plan" ? "Business Plan" : "Relatório de Mercado";
+
+  const message =
+    `Oi, ${firstName}! 👋\n\n` +
+    `Recebemos sua compra do *${produtoLabel}* com sucesso.\n\n` +
+    `O material foi enviado para o seu email. Qualquer dúvida é só responder aqui.\n\n` +
+    `— Time PlugFácil`;
+
+  const phoneE164 = phone.replace(/\D/g, "");
+
+  try {
+    const res = await fetch(
+      `https://api.z-api.io/instances/${instanceId}/token/${token}/send-text`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(clientToken ? { "Client-Token": clientToken } : {}),
+        },
+        body: JSON.stringify({ phone: phoneE164, message }),
+      },
+    );
+    if (!res.ok) {
+      console.error("Z-API error:", await res.text());
+    }
+  } catch (err) {
+    console.error("Z-API exception:", err);
+  }
+}
+
+async function createPipefyCard({
+  nome,
+  phone,
+  email,
+  perfil,
+  produto,
+}: {
+  nome: string;
+  phone: string;
+  email: string;
+  perfil: string;
+  produto: string;
+}) {
+  const pipefyToken = process.env.PIPEFY_TOKEN;
+  const pipeId = process.env.PIPEFY_PIPE_ID;
+  const phaseId = process.env.PIPEFY_PHASE_ENTRY;
+  if (!pipefyToken || !pipeId) return;
+
+  const infoCliente = `Perfil: ${perfil || "não informado"} | Email: ${email} | Produto: ${produto}`;
+
+  const fields = [
+    { fieldId: "nome", value: nome },
+    { fieldId: "telefone", value: phone.replace(/\D/g, "") },
+    { fieldId: "origem_do_lead", value: produto },
+    { fieldId: "informa_es_do_cliente", value: infoCliente },
+  ];
+
+  const fieldsInput = fields
+    .map((f) => `{ fieldId: "${f.fieldId}", value: "${f.value.replace(/"/g, '\\"')}" }`)
+    .join(", ");
+
+  const mutation = `
+    mutation {
+      createCard(input: {
+        pipe_id: ${pipeId}
+        ${phaseId ? `phase_id: ${phaseId}` : ""}
+        fields_attributes: [${fieldsInput}]
+      }) {
+        card { id title }
+      }
+    }
+  `;
+
+  try {
+    const res = await fetch("https://api.pipefy.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${pipefyToken}`,
+      },
+      body: JSON.stringify({ query: mutation }),
+    });
+    const json = await res.json();
+    if (json.errors) {
+      console.error("Pipefy error:", JSON.stringify(json.errors));
+    }
+  } catch (err) {
+    console.error("Pipefy exception:", err);
+  }
 }
 
 async function sendPdfEmail({
