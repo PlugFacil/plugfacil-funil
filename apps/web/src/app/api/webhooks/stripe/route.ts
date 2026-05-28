@@ -72,6 +72,12 @@ export async function POST(req: Request) {
   // fire-and-forget — não bloqueia resposta ao Stripe
   void sendWhatsAppWelcome({ phone: whatsapp, nome, produto });
   void createPipefyCard({ nome, phone: whatsapp, email, perfil, produto });
+  void trackMetaPurchase({
+    email,
+    eventId: session.id,
+    value: (session.amount_total ?? 0) / 100,
+    currency: session.currency?.toUpperCase() ?? "BRL",
+  });
 
   return NextResponse.json({ received: true });
 }
@@ -313,6 +319,52 @@ function nurture7(name: string) {
     ${btn("Gerar meu Business Plan com 20% off", couponUrl)}
     ${sig()}
   `);
+}
+
+async function trackMetaPurchase({
+  email,
+  eventId,
+  value,
+  currency,
+}: {
+  email: string;
+  eventId: string;
+  value: number;
+  currency: string;
+}) {
+  const pixelId = process.env.META_PIXEL_ID;
+  const accessToken = process.env.META_ACCESS_TOKEN;
+  if (!pixelId || !accessToken) return;
+
+  const crypto = await import("crypto");
+  const hashedEmail = crypto.createHash("sha256").update(email.toLowerCase().trim()).digest("hex");
+
+  try {
+    const res = await fetch(
+      `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          data: [
+            {
+              event_name: "Purchase",
+              event_time: Math.floor(Date.now() / 1000),
+              event_id: eventId,
+              action_source: "website",
+              user_data: { em: [hashedEmail] },
+              custom_data: { value, currency },
+            },
+          ],
+        }),
+      },
+    );
+    if (!res.ok) {
+      console.error("Meta CAPI error:", await res.text());
+    }
+  } catch (err) {
+    console.error("Meta CAPI exception:", err);
+  }
 }
 
 async function sendWhatsAppWelcome({

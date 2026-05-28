@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackLead, trackInitiateCheckout } from "@/components/MetaPixel";
 
 const PERFIS = [
   { value: "", label: "Qual o seu perfil?" },
@@ -31,15 +32,20 @@ export function PurchaseCard({ dark = false }: PurchaseCardProps) {
     setLoading(true);
 
     try {
+      trackLead(form.email);
+
+      const utms = JSON.parse(localStorage.getItem("plugfacil_utms") ?? "{}");
+
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, produto: "pdf_mercado" }),
+        body: JSON.stringify({ ...form, produto: "pdf_mercado", ...utms }),
       });
 
       if (!res.ok) throw new Error("Erro ao salvar lead");
 
       const { checkoutUrl } = (await res.json()) as { checkoutUrl: string };
+      trackInitiateCheckout(49.9);
       window.location.href = checkoutUrl;
     } catch {
       setError("Algo deu errado. Tente novamente.");
