@@ -10,13 +10,11 @@ const MODELOS = [
   { id: "hub", label: "HUB", investimento: 240000, ac: 3, dc: 1, descricao: "Eletropostos completos" },
 ];
 
-// Taxas fixas (fonte: planilha APP_ROI)
+// Taxas fixas (fonte: planilha APP_ROI — ajustado pelo modelo PlugFácil)
 const ROYALTIES = 0.12;         // PlugFácil variável
 const TAXA_TUPI = 0.10;         // plataforma de gestão
 const IMPOSTOS = 0.10;          // impostos sobre receita
-const PROVISIONAMENTO = 0.08;   // reserva manutenção
-const MENSALIDADE_TUPI = 50;    // R$/mês fixo
-const PERDAS_TECNICAS = 0.05;   // 5% do kWh não faturado
+const PERDAS_TECNICAS = 0.01;   // 1% do kWh (perdas técnicas)
 const CDI_MENSAL = 0.0084;
 const CDB_MENSAL = 0.0080;
 
@@ -63,8 +61,7 @@ export function RoiSimulator() {
       (modelo.ac * recargasAcDia * KWH_POR_SESSAO_AC + modelo.dc * recargasDcDia * KWH_POR_SESSAO_DC) *
       tarifaEnergia * diasMes;
 
-    const descontosPercentual = faturamentoBruto * (ROYALTIES + TAXA_TUPI + IMPOSTOS + PROVISIONAMENTO);
-    const descontos = descontosPercentual + MENSALIDADE_TUPI;
+    const descontos = faturamentoBruto * (ROYALTIES + TAXA_TUPI + IMPOSTOS);
     const lucroLiquido = faturamentoBruto - custoEnergiaMes - descontos;
 
     const rendimentoMensalPct = lucroLiquido / modelo.investimento;
@@ -317,7 +314,7 @@ export function RoiSimulator() {
               <p className="font-bold text-red-500">- {brl(resultado.custoEnergiaMes)}</p>
             </div>
             <div>
-              <p className="text-gray-400 text-xs mb-1">Royalties 12% + Tupi 10% + Impostos 10% + Prov. 8% + R$50</p>
+              <p className="text-gray-400 text-xs mb-1">Royalties 12% + Tupi 10% + Impostos 10%</p>
               <p className="font-bold text-red-500">- {brl(resultado.descontos)}</p>
             </div>
             <div>
