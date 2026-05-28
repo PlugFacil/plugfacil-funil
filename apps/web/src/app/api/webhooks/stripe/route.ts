@@ -69,15 +69,17 @@ export async function POST(req: Request) {
     await scheduleNurtureSequence({ email, nome });
   }
 
-  // fire-and-forget — não bloqueia resposta ao Stripe
-  void sendWhatsAppWelcome({ phone: whatsapp, nome, produto });
-  void createPipefyCard({ nome, phone: whatsapp, email, perfil, produto });
-  void trackMetaPurchase({
-    email,
-    eventId: session.id,
-    value: (session.amount_total ?? 0) / 100,
-    currency: session.currency?.toUpperCase() ?? "BRL",
-  });
+  // Aguardar em paralelo antes de retornar — Vercel mata a função ao retornar 200
+  await Promise.allSettled([
+    sendWhatsAppWelcome({ phone: whatsapp, nome, produto }),
+    createPipefyCard({ nome, phone: whatsapp, email, perfil, produto }),
+    trackMetaPurchase({
+      email,
+      eventId: session.id,
+      value: (session.amount_total ?? 0) / 100,
+      currency: session.currency?.toUpperCase() ?? "BRL",
+    }),
+  ]);
 
   return NextResponse.json({ received: true });
 }
