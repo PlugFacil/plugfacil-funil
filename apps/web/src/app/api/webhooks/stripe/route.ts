@@ -434,6 +434,7 @@ async function createPipefyCard({
 
   const fields = [
     { field_id: "nome", field_value: nome },
+    { field_id: "empresa", field_value: "PlugFácil" },
     { field_id: "telefone", field_value: phone.replace(/\D/g, "") },
     { field_id: "email", field_value: email },
     { field_id: "origem_do_lead", field_value: "Outra" },
