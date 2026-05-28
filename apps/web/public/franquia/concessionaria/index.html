@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlugFácil Parcerias — Eletropostos sem investimento para o seu negócio</title>
+  <meta name="description" content="Instale eletropostos no seu estabelecimento sem nenhum investimento. A PlugFácil instala, opera e mantém. Você recebe parte da receita e atrai clientes de carro elétrico.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1E3557; --ink-deep: #142545;
+      --volt: #6DC02F; --volt-soft: #E8F5D9;
+      --current: #00AFCE; --mist: #F0F4F8;
+      --smoke: #6C7A93; --silver: #C9D1DD;
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+
+    nav { background: var(--ink); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    nav img { height: 32px; }
+    nav a { color: white; font-size: 13px; font-weight: 600; text-decoration: none; background: var(--volt); padding: .5rem 1.25rem; border-radius: 999px; transition: opacity .2s; }
+    nav a:hover { opacity: .85; }
+
+    .hero { background: linear-gradient(135deg, rgba(20,37,69,0.93) 0%, rgba(20,37,69,0.88) 100%), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&q=80&auto=format') center/cover no-repeat; color: white; padding: 6rem 2rem 5rem; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, rgba(0,175,206,.1) 0%, transparent 60%); }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(109,192,47,.15); border: 1px solid rgba(109,192,47,.3); color: var(--volt); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; padding: .35rem .9rem; border-radius: 999px; margin-bottom: 1.5rem; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.08; letter-spacing: -.02em; max-width: 860px; margin: 0 auto .75rem; }
+    .hero h1 span { color: var(--volt); }
+    .hero p { font-size: clamp(1.05rem, 2.2vw, 1.3rem); opacity: .8; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.65; }
+    .hero-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .hero-stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 1rem 1.5rem; text-align: center; }
+    .hero-stat-val { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--volt); line-height: 1; }
+    .hero-stat-lab { font-size: 11px; color: rgba(255,255,255,.55); margin-top: .3rem; max-width: 130px; }
+    .btn-hero { display: inline-block; background: var(--volt); color: white; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1rem; padding: 1rem 2.5rem; border-radius: 999px; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(109,192,47,.35); }
+    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(109,192,47,.45); }
+    .hero-note { margin-top: 1rem; font-size: 12px; color: rgba(255,255,255,.4); }
+
+    section { padding: 5rem 2rem; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; color: var(--current); margin-bottom: .75rem; }
+    .section-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.12; letter-spacing: -.025em; color: var(--ink); margin-bottom: 1rem; }
+    .section-sub { font-size: 1rem; color: var(--smoke); line-height: 1.7; max-width: 580px; }
+    .divider { width: 48px; height: 4px; background: var(--volt); border-radius: 2px; margin: 1.25rem 0; }
+
+    /* DOR */
+    .dor { background: var(--mist); }
+    .dor-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .dor-card { background: white; border-radius: var(--radius); padding: 1.5rem; border-left: 4px solid var(--silver); }
+    .dor-card.active { border-left-color: var(--volt); }
+    .dor-icon { font-size: 1.5rem; margin-bottom: .75rem; }
+    .dor-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+    .dor-text { font-size: 13px; color: var(--smoke); line-height: 1.6; }
+
+    /* WIN-WIN */
+    .winwin { background: var(--ink); color: white; }
+    .winwin .section-title { color: white; }
+    .winwin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .ww-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 1.5rem; }
+    .ww-card-icon { font-size: 1.75rem; margin-bottom: .75rem; }
+    .ww-card-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 700; color: var(--volt); margin-bottom: .5rem; }
+    .ww-card-text { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.6; }
+
+    /* FINAME */
+    .finame { background: var(--volt-soft); border-left: 5px solid var(--volt); border-radius: var(--radius); padding: 2rem 2.5rem; margin-top: 3rem; }
+    .finame-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--volt); margin-bottom: .5rem; }
+    .finame-title { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--ink); margin-bottom: .75rem; }
+    .finame-text { font-size: 14px; color: var(--smoke); line-height: 1.7; }
+    .finame-list { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: .5rem; }
+    .finame-list li { font-size: 13px; color: var(--smoke); display: flex; gap: .6rem; }
+    .finame-list li::before { content: '✓'; color: var(--volt); font-weight: 700; flex-shrink: 0; }
+
+    /* COMO FUNCIONA */
+    .steps-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    @media(max-width:640px){ .steps-wrap { grid-template-columns: 1fr; } }
+    .step { background: white; border-radius: var(--radius); padding: 1.75rem; border: 1.5px solid var(--silver); text-align: center; }
+    .step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--ink); color: var(--volt); font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .step h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .step p { font-size: 12.5px; color: var(--smoke); line-height: 1.6; }
+
+    /* PROOF */
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .proof-item { background: var(--mist); border-radius: var(--radius); padding: 1.25rem; text-align: center; }
+    .proof-val { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 900; color: var(--ink); line-height: 1; }
+    .proof-lab { font-size: 12px; color: var(--smoke); margin-top: .35rem; line-height: 1.5; }
+
+    /* FORM */
+    .form-section { background: var(--ink); color: white; }
+    .form-wrap { max-width: 620px; margin: 0 auto; }
+    .form-wrap .section-title { color: white; }
+    .form-wrap .section-sub { color: rgba(255,255,255,.65); }
+    form { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media(max-width:520px){ .form-row { grid-template-columns: 1fr; } }
+    label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.6); display: block; margin-bottom: .35rem; }
+    input, select, textarea { width: 100%; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); color: white; border-radius: 8px; padding: .8rem 1rem; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color .2s; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--volt); }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.35); }
+    select option { background: var(--ink); color: white; }
+    textarea { resize: vertical; min-height: 80px; }
+    .btn-submit { background: var(--volt); color: white; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1rem; padding: 1rem; border-radius: 999px; border: none; cursor: pointer; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(109,192,47,.3); margin-top: .5rem; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(109,192,47,.4); }
+    .form-note { font-size: 11px; color: rgba(255,255,255,.35); text-align: center; margin-top: .5rem; line-height: 1.6; }
+
+    footer { background: var(--ink-deep); padding: 2rem; text-align: center; color: rgba(255,255,255,.35); font-size: 12px; line-height: 1.7; }
+    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <img src="data:image/png;base64,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" alt="PlugFácil" onerror="this.style.display='none'">
+  <a href="#parceria">Quero ser parceiro</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">🤝 Parceria comercial — sem investimento para o seu negócio</div>
+  <h1>Seu estabelecimento atrai<br><span>clientes elétricos.</span><br>A PlugFácil cuida de tudo.</h1>
+  <p>Eletropostos instalados, operados e mantidos por nossa conta. O melhor preço do mercado no equipamento, zero dor de cabeça operacional e uma parceria de longo prazo com quem sabe do que está fazendo.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">R$ 0</div>
+      <div class="hero-stat-lab">investimento inicial para o parceiro</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">300k+</div>
+      <div class="hero-stat-lab">motoristas na plataforma Tupi</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">30 dias</div>
+      <div class="hero-stat-lab">da parceria ao primeiro carregador ligado</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">80%+</div>
+      <div class="hero-stat-lab">de crescimento anual da frota elétrica no Brasil</div>
+    </div>
+  </div>
+  <a href="#parceria" class="btn-hero">Quero entender essa parceria →</a>
+  <p class="hero-note">Sem compromisso. Em 5 dias úteis temos uma proposta personalizada para você.</p>
+</div>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="container">
+    <div class="section-label">O cenário atual</div>
+    <h2 class="section-title">Clientes de carro elétrico escolhem<br>onde parar pelo carregador disponível.</h2>
+    <div class="divider"></div>
+    <p class="section-sub">A frota elétrica já passa de 300 mil no Brasil e cresce mais de 80% ao ano. Quem instalar primeiro vira referência na cidade. Quem esperar chega tarde.</p>
+    <div class="dor-grid" style="margin-top:2.5rem;">
+      <div class="dor-card active">
+        <div class="dor-icon">⚡</div>
+        <div class="dor-title">O eletroposto vira motivo de visita</div>
+        <div class="dor-text">Motorista de VE para para carregar entre 20 e 60 minutos. Esse tempo dentro do seu estabelecimento é oportunidade de consumo que sua concorrência ainda não tem.</div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">📍</div>
+        <div class="dor-title">Quem instala primeiro domina o raio</div>
+        <div class="dor-text">O primeiro eletroposto num raio de 5 km captura 100% da demanda local. O segundo chega num mercado já ocupado. A janela de vantagem competitiva é agora.</div>
+      </div>
+      <div class="dor-card">
+        <div class="dor-icon">🏆</div>
+        <div class="dor-title">Diferencial ESG e de marca</div>
+        <div class="dor-text">Sustentabilidade virou critério de escolha para consumidor, fornecedor e franqueador. Eletroposto no estabelecimento é argumento de posicionamento e relatório ESG de verdade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WIN-WIN -->
+<!-- FOTO STRIP -->
+<div style="position:relative; height:320px; overflow:hidden;">
+  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80&auto=format" alt="Eletroposto PlugFácil" style="width:100%; height:100%; object-fit:cover; object-position:center 60%;">
+  <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(20,37,69,0.85) 0%, rgba(20,37,69,0.3) 60%, transparent 100%); display:flex; align-items:center; padding:0 4rem;">
+    <div style="max-width:500px; color:white;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--volt); margin-bottom:.75rem;">Infra de ponta</div>
+      <div style="font-family:'Montserrat',sans-serif; font-size:clamp(1.3rem,3vw,2rem); font-weight:900; line-height:1.2;">Carregadores WEG de última geração. App TUPI com 300k+ motoristas. Suporte 24/7.</div>
+    </div>
+  </div>
+</div>
+<section class="winwin">
+  <div class="container">
+    <div class="section-label" style="color:var(--volt)">Por que a PlugFácil</div>
+    <h2 class="section-title">Não lucramos na instalação.<br>Lucramos juntos no longo prazo.</h2>
+    <div class="divider" style="background:var(--volt);"></div>
+    <p class="section-sub" style="color:rgba(255,255,255,.65)">Nossa proposta de valor não é vender equipamento. É construir uma operação que funciona, que cresce e que faz sentido financeiro para os dois lados — para sempre.</p>
+    <div class="winwin-grid">
+      <div class="ww-card">
+        <div class="ww-card-icon">💰</div>
+        <div class="ww-card-title">Melhor preço do mercado no equipamento</div>
+        <div class="ww-card-text">Como Integradores Certificados WEG, compramos os carregadores com preço diferenciado que nenhum concorrente consegue avulso. Esse ganho de custo vai direto para a parceria — não para a nossa margem.</div>
+      </div>
+      <div class="ww-card">
+        <div class="ww-card-icon">🔧</div>
+        <div class="ww-card-title">Zero dor de cabeça operacional</div>
+        <div class="ww-card-text">Instalação, manutenção preventiva e corretiva, atendimento ao motorista, gestão da plataforma e relatórios mensais: tudo por nossa conta. Você não precisa de nenhum funcionário dedicado a isso.</div>
+      </div>
+      <div class="ww-card">
+        <div class="ww-card-icon">📊</div>
+        <div class="ww-card-title">Receita compartilhada em contrato</div>
+        <div class="ww-card-text">O modelo de parceria prevê participação na margem operacional dos eletropostos. Não é promessa — está documentado antes de assinar. Quanto maior a utilização, maior o retorno compartilhado.</div>
+      </div>
+      <div class="ww-card">
+        <div class="ww-card-icon">🛡</div>
+        <div class="ww-card-title">Hardware WEG — o melhor padrão nacional</div>
+        <div class="ww-card-text">Equipamentos certificados pelo maior fabricante de motores do Brasil. Suporte técnico WEG por trás. Conformidade com ABNT NBR 5410, ANEEL e Corpo de Bombeiros (IT-64). Sem surpresa pós-instalação.</div>
+      </div>
+    </div>
+
+    <!-- FINAME BLOCK -->
+    <div class="finame">
+      <div class="finame-label">🏦 Jornada de eletrificação — BNDES / FINAME</div>
+      <div class="finame-title">Projeto de longo prazo com financiamento subsidiado.</div>
+      <div class="finame-text">A WEG é cadastrada no FINAME (BNDES). Isso significa que, como parceiros PlugFácil, você tem acesso à linha de financiamento de longo prazo do governo federal para equipamentos de energia. Na prática: podemos estruturar juntos uma jornada de eletrificação completa para o seu negócio (hoje 2 carregadores, amanhã 10) com o mínimo de desembolso de capital possível.</div>
+      <ul class="finame-list">
+        <li>Projeto de eletrificação a longo prazo elaborado por nossa equipe — sem custo para o parceiro</li>
+        <li>Facilitação do acesso ao BNDES/FINAME para financiar a expansão da infraestrutura</li>
+        <li>Taxas subsidiadas: mais barato do que qualquer linha de crédito convencional</li>
+        <li>Você expande a capacidade de recarga conforme a demanda cresce — sem comprometer caixa</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="container">
+    <div class="section-label">Simples do início ao fim</div>
+    <h2 class="section-title">Como funciona a parceria comercial</h2>
+    <div class="divider"></div>
+    <div class="steps-wrap">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Diagnóstico técnico gratuito</h3>
+        <p>Nossa equipe faz o levantamento elétrico do seu estabelecimento, define o melhor ponto de instalação e elabora a proposta personalizada. Sem compromisso.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Assinatura do contrato de parceria</h3>
+        <p>Contrato claro: o que a PlugFácil faz, o que o parceiro recebe, como funciona o repasse de receita e as condições de saída — tudo documentado antes de instalar.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Instalação e operação por nossa conta</h3>
+        <p>Em até 30 dias o eletroposto está funcionando. Manutenção, suporte, relatórios e gestão da plataforma ficam 100% com a PlugFácil. Você foca no seu negócio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA -->
+<section style="background:var(--mist);">
+  <div class="container">
+    <div class="section-label">Por que agora</div>
+    <h2 class="section-title">O mercado não espera.</h2>
+    <div class="divider"></div>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-val">1:63</div>
+        <div class="proof-lab">proporção entre carregadores e carros elétricos no Brasil — déficit crítico</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">300k+</div>
+        <div class="proof-lab">motoristas ativos na plataforma Tupi procurando onde carregar</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">R$100bi</div>
+        <div class="proof-lab">em investimentos de montadoras na eletrificação do Brasil</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-val">80%+</div>
+        <div class="proof-lab">de crescimento anual da frota elétrica — ABVE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="parceria">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="section-label" style="color:var(--volt)">Próximo passo</div>
+      <h2 class="section-title">Fale com um especialista<br>PlugFácil</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Em 5 dias úteis entregamos: proposta técnica personalizada + simulação de parceria + plano de eletrificação de longo prazo. Sem compromisso.</p>
+      <form id="leadForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div>
+            <label for="whatsapp">WhatsApp (com DDD)</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Quero a proposta de parceria →</button>
+        <p class="form-note">Sem compromisso. Você decide depois de ver a proposta.<br>Seus dados são usados só para preparar o material do seu negócio.</p>
+      </form>
+      <div id="successMsg" style="display:none; text-align:center; padding:2rem 0;">
+        <div style="font-size:2rem; margin-bottom:1rem;">✅</div>
+        <h3 style="font-family:'Montserrat',sans-serif; color:white; margin-bottom:.5rem;">Recebido!</h3>
+        <p style="color:rgba(255,255,255,.65); font-size:14px;">Um especialista PlugFácil vai entrar em contato pelo WhatsApp em até 2 horas úteis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong style="color:rgba(255,255,255,.7)">PlugFácil Mobilidade Elétrica</strong> · CNPJ 66.053.337/0001-75 · São José dos Campos, SP</p>
+  <p style="margin-top:.4rem;"><a href="mailto:contato@plugfacil.com.br">contato@plugfacil.com.br</a> · WhatsApp <a href="https://wa.me/5512988506961">(12) 98850-6961</a></p>
+</footer>
+
+<script>
+  // ── CRM CONFIG ──────────────────────────────────────────────────────────────
+  const PIPEFY_WEBHOOK_URL = 'https://plugfacil-funil-web.vercel.app/api/leads/canhao';
+
+  const params = new URLSearchParams(window.location.search);
+  const utmData = { source: params.get('utm_source')||'', medium: params.get('utm_medium')||'', campaign: params.get('utm_campaign')||'', content: params.get('utm_content')||'' };
+
+  async function submitLead(data, waMsg) {
+    if (PIPEFY_WEBHOOK_URL) {
+      try {
+        await fetch(PIPEFY_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: form.nome?.value || form.name?.value || '',
+          email: form.email.value,
+          whatsapp: form.whatsapp?.value || form.phone?.value || '',
+          perfil: form.perfil?.value || form.tipo?.value || 'concessionaria',
+          cidade: form.cidade?.value || '',
+          origem: 'concessionaria'
+        })
+      }) });
+        console.log('[CRM] Lead enviado ao Pipefy:', data);
+      } catch (err) { console.warn('[CRM] Pipefy indisponível:', err); }
+    } else { console.log('[CRM] Webhook não configurado. Lead:', data); }
+    window.open(`https://wa.me/5512988506961?text=${encodeURIComponent(waMsg)}`, '_blank');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const nome = document.getElementById('nome').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+
+    const data = { nome, whatsapp, persona: 'parceria-comercial', utm: utmData, timestamp: new Date().toISOString(), lp: 'concessionaria' };
+    const waMsg = `Olá! Sou ${nome} e tenho interesse em parceria com a PlugFácil para instalar eletropostos.`;
+
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    submitLead(data, waMsg);
+  }
+</script>
+</body>
+</html>
