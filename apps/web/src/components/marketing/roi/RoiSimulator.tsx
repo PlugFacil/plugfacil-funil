@@ -10,10 +10,13 @@ const MODELOS = [
   { id: "hub", label: "HUB", investimento: 240000, ac: 3, dc: 1, descricao: "Eletropostos completos" },
 ];
 
-// Taxas fixas
-const ROYALTIES = 0.12;
-const TAXA_TUPI = 0.10;
-const RESERVA_MANUTENCAO = 0.05;
+// Taxas fixas (fonte: planilha APP_ROI)
+const ROYALTIES = 0.12;         // PlugFácil variável
+const TAXA_TUPI = 0.10;         // plataforma de gestão
+const IMPOSTOS = 0.10;          // impostos sobre receita
+const PROVISIONAMENTO = 0.08;   // reserva manutenção
+const MENSALIDADE_TUPI = 50;    // R$/mês fixo
+const PERDAS_TECNICAS = 0.05;   // 5% do kWh não faturado
 const CDI_MENSAL = 0.0084;
 const CDB_MENSAL = 0.0080;
 
@@ -47,15 +50,21 @@ export function RoiSimulator() {
   const modelo = MODELOS.find((m) => m.id === modeloId)!;
 
   const resultado = useMemo(() => {
-    const faturamentoAcMes = modelo.ac * recargasAcDia * KWH_POR_SESSAO_AC * tarifaCobranca * diasMes;
-    const faturamentoDcMes = modelo.dc * recargasDcDia * KWH_POR_SESSAO_DC * tarifaCobranca * diasMes;
+    // kWh entregue já com perdas técnicas descontadas
+    const kwhAcMes = modelo.ac * recargasAcDia * KWH_POR_SESSAO_AC * (1 - PERDAS_TECNICAS) * diasMes;
+    const kwhDcMes = modelo.dc * recargasDcDia * KWH_POR_SESSAO_DC * (1 - PERDAS_TECNICAS) * diasMes;
+
+    const faturamentoAcMes = kwhAcMes * tarifaCobranca;
+    const faturamentoDcMes = kwhDcMes * tarifaCobranca;
     const faturamentoBruto = faturamentoAcMes + faturamentoDcMes;
 
+    // Custo de energia: kWh consumido (sem desconto de perdas — paga tudo da distribuidora)
     const custoEnergiaMes =
       (modelo.ac * recargasAcDia * KWH_POR_SESSAO_AC + modelo.dc * recargasDcDia * KWH_POR_SESSAO_DC) *
       tarifaEnergia * diasMes;
 
-    const descontos = faturamentoBruto * (ROYALTIES + TAXA_TUPI + RESERVA_MANUTENCAO);
+    const descontosPercentual = faturamentoBruto * (ROYALTIES + TAXA_TUPI + IMPOSTOS + PROVISIONAMENTO);
+    const descontos = descontosPercentual + MENSALIDADE_TUPI;
     const lucroLiquido = faturamentoBruto - custoEnergiaMes - descontos;
 
     const rendimentoMensalPct = lucroLiquido / modelo.investimento;
@@ -308,7 +317,7 @@ export function RoiSimulator() {
               <p className="font-bold text-red-500">- {brl(resultado.custoEnergiaMes)}</p>
             </div>
             <div>
-              <p className="text-gray-400 text-xs mb-1">Royalties + Tupi + Reserva</p>
+              <p className="text-gray-400 text-xs mb-1">Royalties 12% + Tupi 10% + Impostos 10% + Prov. 8% + R$50</p>
               <p className="font-bold text-red-500">- {brl(resultado.descontos)}</p>
             </div>
             <div>
