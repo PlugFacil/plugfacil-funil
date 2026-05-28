@@ -433,14 +433,15 @@ async function createPipefyCard({
   const infoCliente = `Perfil: ${perfil || "não informado"} | Email: ${email} | Produto: ${produto}`;
 
   const fields = [
-    { fieldId: "nome", value: nome },
-    { fieldId: "telefone", value: phone.replace(/\D/g, "") },
-    { fieldId: "origem_do_lead", value: produto },
-    { fieldId: "informa_es_do_cliente", value: infoCliente },
+    { field_id: "nome", field_value: nome },
+    { field_id: "telefone", field_value: phone.replace(/\D/g, "") },
+    { field_id: "email", field_value: email },
+    { field_id: "origem_do_lead", field_value: "Outra" },
+    { field_id: "informa_es_do_cliente", field_value: infoCliente },
   ];
 
   const fieldsInput = fields
-    .map((f) => `{ fieldId: "${f.fieldId}", value: "${f.value.replace(/"/g, '\\"')}" }`)
+    .map((f) => `{ field_id: "${f.field_id}", field_value: "${f.field_value.replace(/"/g, '\\"')}" }`)
     .join(", ");
 
   const mutation = `
